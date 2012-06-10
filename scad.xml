@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE MODE SYSTEM "xmode.dtd">
+
+<!--
+	OpenSCAD (http://www.openscad.org/) mode by Kevin Tucker
+	this mode basically follows the language as explained by the wikibook here:
+	http://en.wikibooks.org/wiki/OpenSCAD_User_Manual/The_OpenSCAD_Language
+
+	catalog line:
+	<MODE NAME="OpenSCAD" FILE="scad.xml" FILE_NAME_GLOB="*.scad" />
+	-->
+
+<MODE>
+	<PROPS>
+		<PROPERTY NAME="commentStart" VALUE="/*"/>
+		<PROPERTY NAME="commentEnd" VALUE="*/"/>
+		<PROPERTY NAME="lineComment" VALUE="//"/>
+	</PROPS>
+
+	<RULES
+		IGNORE_CASE="FALSE"
+		HIGHLIGHT_DIGITS="TRUE">
+
+		<SPAN TYPE="COMMENT1">
+			<BEGIN>/*</BEGIN>
+			<END>*/</END>
+		</SPAN>
+
+		<SPAN TYPE="LITERAL1" NO_LINE_BREAK="TRUE" ESCAPE="\">
+			<BEGIN>"</BEGIN>
+			<END>"</END>
+		</SPAN>
+
+		<MARK_PREVIOUS TYPE="FUNCTION" MATCH_TYPE="OPERATOR">(</MARK_PREVIOUS>
+		<SEQ TYPE="OPERATOR">)</SEQ>
+
+		<EOL_SPAN TYPE="COMMENT2">//</EOL_SPAN>
+
+		<SEQ TYPE="OPERATOR">}</SEQ>
+		<SEQ TYPE="OPERATOR">{</SEQ>
+		<SEQ TYPE="OPERATOR">]</SEQ>
+		<SEQ TYPE="OPERATOR">[</SEQ>
+
+		<SEQ TYPE="OPERATOR">=</SEQ>
+		<SEQ TYPE="OPERATOR">;</SEQ>
+
+		<!-- Logical Operators -->
+		<SEQ TYPE="OPERATOR">&amp;&amp;</SEQ>
+		<SEQ TYPE="OPERATOR">||</SEQ>
+		<SEQ TYPE="OPERATOR">!</SEQ>
+
+		<!-- Relational Operators -->
+		<SEQ TYPE="OPERATOR">&lt;</SEQ>
+		<SEQ TYPE="OPERATOR">&lt;=</SEQ>
+		<SEQ TYPE="OPERATOR">==</SEQ>
+		<SEQ TYPE="OPERATOR">!=</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;=</SEQ>
+		<SEQ TYPE="OPERATOR">&gt;</SEQ>
+
+		<!-- Conditional Operators -->
+		<SEQ TYPE="OPERATOR">?</SEQ>
+		<SEQ TYPE="OPERATOR">:</SEQ>
+
+		<!-- Scalar Arithmetical Operators -->
+		<SEQ TYPE="OPERATOR">+</SEQ>
+		<SEQ TYPE="OPERATOR">-</SEQ>
+		<SEQ TYPE="OPERATOR">*</SEQ>
+		<SEQ TYPE="OPERATOR">/</SEQ>
+		<SEQ TYPE="OPERATOR">%</SEQ>
+
+		<SEQ TYPE="OPERATOR">#</SEQ> <!-- Debug Modifier -->
+
+		<!-- Special variables -->
+		<SEQ_REGEXP HASH_CHAR="$" TYPE="LITERAL3">\$fa\b</SEQ_REGEXP>
+		<SEQ_REGEXP HASH_CHAR="$" TYPE="LITERAL3">\$fs\b</SEQ_REGEXP>
+		<SEQ_REGEXP HASH_CHAR="$" TYPE="LITERAL3">\$fn\b</SEQ_REGEXP>
+		<SEQ_REGEXP HASH_CHAR="$" TYPE="LITERAL3">\$t\b</SEQ_REGEXP>
+		<MARK_FOLLOWING TYPE="LITERAL4">$</MARK_FOLLOWING>
+
+		<KEYWORDS>
+			<MARKUP>include</MARKUP>
+			<MARKUP>use</MARKUP>
+
+			<KEYWORD1>module</KEYWORD1>
+			<KEYWORD1>function</KEYWORD1>
+
+			<KEYWORD1>for</KEYWORD1>
+			<KEYWORD1>intersection_for</KEYWORD1>
+			<KEYWORD1>if</KEYWORD1>
+			<KEYWORD1>else</KEYWORD1>
+			<KEYWORD1>assign</KEYWORD1>
+
+			<LITERAL2>true</LITERAL2>
+			<LITERAL2>false</LITERAL2>
+
+			<!-- Mathematical Functions -->
+			<KEYWORD4>abs</KEYWORD4>
+			<KEYWORD4>acos</KEYWORD4>
+			<KEYWORD4>asin</KEYWORD4>
+			<KEYWORD4>atan</KEYWORD4>
+			<KEYWORD4>atan4</KEYWORD4>
+			<KEYWORD4>ceil</KEYWORD4>
+			<KEYWORD4>cos</KEYWORD4>
+			<KEYWORD4>exp</KEYWORD4>
+			<KEYWORD4>floor</KEYWORD4>
+			<KEYWORD4>ln</KEYWORD4>
+			<KEYWORD4>log</KEYWORD4>
+			<KEYWORD4>lookup</KEYWORD4>
+			<KEYWORD4>max</KEYWORD4>
+			<KEYWORD4>min</KEYWORD4>
+			<KEYWORD4>pow</KEYWORD4>
+			<KEYWORD4>rands</KEYWORD4>
+			<KEYWORD4>round</KEYWORD4>
+			<KEYWORD4>sign</KEYWORD4>
+			<KEYWORD4>sin</KEYWORD4>
+			<KEYWORD4>sqrt</KEYWORD4>
+			<KEYWORD4>tan</KEYWORD4>
+
+			<!-- String Functions -->
+			<KEYWORD4>str</KEYWORD4>
+
+			<!-- Primitive Solids -->
+			<KEYWORD2>cube</KEYWORD2>
+			<KEYWORD2>sphere</KEYWORD2>
+			<KEYWORD2>cylinder</KEYWORD2>
+			<KEYWORD2>polyhedron</KEYWORD2>
+
+			<!-- Transformations -->
+			<KEYWORD3>scale</KEYWORD3>
+			<KEYWORD3>rotate</KEYWORD3>
+			<KEYWORD3>translate</KEYWORD3>
+			<KEYWORD3>mirror</KEYWORD3>
+			<KEYWORD3>multmatrix</KEYWORD3>
+			<KEYWORD3>color</KEYWORD3> <!-- TODO: could do color name matching in strings -->
+			<KEYWORD3>minkowski</KEYWORD3>
+			<KEYWORD3>hull</KEYWORD3>
+
+			<!-- CSG Modeling -->
+			<KEYWORD1>union</KEYWORD1>
+			<KEYWORD1>difference</KEYWORD1>
+			<KEYWORD1>intersection</KEYWORD1>
+			<KEYWORD1>render</KEYWORD1>
+
+			<!-- Other Language Features -->
+			<KEYWORD1>echo</KEYWORD1>
+			<KEYWORD2>surface</KEYWORD2>
+			<KEYWORD1>search</KEYWORD1>
+		</KEYWORDS>
+	</RULES>
+</MODE>
+
